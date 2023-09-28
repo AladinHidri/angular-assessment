@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <div class=" cursor-pointer margin-right" (click)="GoToListEmployeePage()" style="display: flex;">
+    <div class="gap">Liste des employées</div>
+    <mat-icon class="margin-top">list</mat-icon>
+  </div>
+  <div class="cursor-pointer" (click)="GoToAddEmployeePage()" style="display: flex;">
+    <div class="gap">Ajout</div>
+    <mat-icon class="margin-top">add</mat-icon>
+  </div>
+</mat-toolbar>
+
+
+
+<router-outlet></router-outlet>

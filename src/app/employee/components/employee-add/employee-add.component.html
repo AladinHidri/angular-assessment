@@ -1,0 +1,75 @@
+<form [formGroup]="employeeForm">
+  <div class="container margin-top">
+    <div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="firstName" type="text" placeholder="Nom">
+            <mat-error *ngIf="employeeForm.get('firstName')?.errors?.['required']">Le Nom est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+            <input matInput formControlName="lastName" type="text" placeholder="Prénom">
+            <mat-error *ngIf="employeeForm.get('lastName')?.errors?.['required']">Le Prénom est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Salaire</mat-label>
+            <input matInput formControlName="salary" type="number" placeholder="Salaire">
+            <mat-error *ngIf="employeeForm.get('salary')?.errors?.['required']">Le Salaire est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="Email">
+            <mat-error *ngIf="employeeForm.get('email')?.errors?.['required']">L'Email est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Téléphone</mat-label>
+            <input matInput formControlName="contactNumber" type="tel" placeholder="Téléphone" pattern="^\+?\d{8,}$">
+            <mat-error *ngIf="employeeForm.get('contactNumber')?.errors?.['required']">Le téléphone est
+              obligatoire</mat-error>
+            <mat-error *ngIf="employeeForm.get('contactNumber')?.errors?.['pattern']">Le téléphone est
+              incorrecte</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="address" type="text" placeholder="Adresse">
+            <mat-error *ngIf="employeeForm.get('address')?.errors?.['required']">L'adresse est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Date de naissance</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Date de naissance"
+              [max]="getCurrentDate()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('dob')?.errors?.['required']">La date de naissance est
+              obligaoire</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success btn-lg" [disabled]="employeeForm.invalid"
+          (click)="createEmployee (employeeForm.value)">Ajouter le nouveau employée</button>
+      </div>
+
+    </div>
+  </div>
+</form>
