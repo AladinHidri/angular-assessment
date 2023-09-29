@@ -5,11 +5,11 @@ import { EmployeeAddComponent } from "./employee/components/employee-add/employe
 import { NotFoundComponent } from "./employee/components/not-found/not-found.component";
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "employees-list" },
-  { path: "create-employee", component: EmployeeAddComponent },
-  { path: "employees-list", component: EmployeeListComponent },
-  { path: "404", component: NotFoundComponent },
-  { path: "**", redirectTo: "/404" },
+  {
+    path: "employees",
+    loadChildren: () =>
+      import("../app/employee/employee.module").then((m) => m.EmployeeModule),
+  },
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export class AppComponent {
     this.restApi.loadEmployeeList();
   }
   GoToListEmployeePage() {
-    this.router.navigate(["employees-list"]);
+    this.router.navigate([""]);
   }
   GoToAddEmployeePage() {
     this.router.navigate(["create-employee"]);

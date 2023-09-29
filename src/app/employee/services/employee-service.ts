@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { IEmployee } from "../models/employee";
-import { Observable, Subject } from "rxjs";
+import { EMPTY, Observable, Subject, of } from "rxjs";
 import { maxBy } from "lodash";
 import { environment } from "src/environment.staging";
 
@@ -26,7 +26,9 @@ export class EmployeeService {
 
   loadEmployeeList() {
     this.http
-      .get<IEmployee[]>(this.employeeUrl)
+      .get<IEmployee[]>(
+        `${this.employeeUrl}/employee?noofRecords=100&idStarts=1`
+      )
       .subscribe((data: IEmployee[]) => {
         this.employees = data;
         this.employees$.next([...this.employees]);
@@ -68,7 +70,7 @@ export class EmployeeService {
     employee.id = this.calculateId();
     employee.dob = this.formatDate(new Date(employee.dob));
     employee.imageUrl =
-      "https://hub.dummyapis.com/Image?text=" +
+      `${this.employeeUrl}/Image?text=` +
       `${employee.firstName.charAt(0)}${employee.lastName.charAt(
         0
       )}`.toUpperCase() +
@@ -77,8 +79,13 @@ export class EmployeeService {
     this.employees$.next([...this.employees]);
   }
 
-  deleteEmployee(id: string) {
+  deleteEmployee(id: string): Observable<string> {
     this.employees = this.employees.filter((employee) => employee.id !== id);
     this.employees$.next([...this.employees]);
+    return of("Employee deleted successfully");
+  }
+  getEmployeeById(id: string | null): Observable<IEmployee[]> {
+    let employeeFound = this.employees.filter((employee) => employee.id === id);
+    return of(employeeFound);
   }
 }

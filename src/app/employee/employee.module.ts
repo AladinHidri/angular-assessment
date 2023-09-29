@@ -17,11 +17,21 @@ import { MatSelectModule } from "@angular/material/select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { EmployeeDeleteComponent } from "./components/employee-delete/employee-delete.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { CommonModule } from "@angular/common";
+import { MatCardModule } from "@angular/material/card";
+import { EmployeeViewComponent } from "./components/employee-view/employee-view.component";
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeAddComponent],
+  declarations: [
+    EmployeeListComponent,
+    EmployeeAddComponent,
+    EmployeeDeleteComponent,
+    EmployeeViewComponent,
+  ],
   imports: [
     EmployeeRoutingModule,
+
     MatInputModule,
     MatButtonModule,
     MatPaginatorModule,
@@ -33,12 +43,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    BrowserAnimationsModule,
+    CommonModule,
     MatProgressSpinnerModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [EmployeeService],
   bootstrap: [],
 })
-export class EmloyeeModuleModule {}
+export class EmployeeModule {}
