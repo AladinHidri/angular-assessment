@@ -10,12 +10,12 @@
         </mat-form-field>
 
         <mat-form-field class="filter-field">
-          <mat-label>Prenom</mat-label>
+          <mat-label>Prénom</mat-label>
           <input matInput (keyup)="applyFilters()" [(ngModel)]="lastNameFilter">
         </mat-form-field>
 
         <mat-form-field class="filter-field">
-          <mat-label>Address Email </mat-label>
+          <mat-label>Addresse Email </mat-label>
           <input matInput (keyup)="applyFilters()" [(ngModel)]="emailFilter">
         </mat-form-field>
 
@@ -46,11 +46,10 @@
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-        <td mat-cell *matCellDef="let employee" class="center-content d-flex" style="padding-left: 10%;">
+        <td mat-cell *matCellDef="let employee" class="center-content d-flex padding-left-10">
 
           <div class="d-flex align-items-center">
-            <img [src]="employee.imageUrl" alt="Employee Image" style="width: 45px; height: 45px"
-              class="rounded-circle" />
+            <img [src]="employee.imageUrl" alt="Employee Image" class="rounded-circle img-style" />
             <div class="ms-3">
               {{ employee.firstName }} {{ employee.lastName }}
             </div>
@@ -97,6 +96,15 @@
           </button>
         </td>
       </ng-container>
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef class="center-header"></th>
+        <td mat-cell *matCellDef="let employee" class="center-content">
+          <button mat-icon-button color="warn" class="delete-button" (click)="employeeDetail(employee.id)">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

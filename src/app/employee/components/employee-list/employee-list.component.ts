@@ -11,6 +11,10 @@ import { Subscription } from "rxjs";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort, Sort } from "@angular/material/sort";
+import { EmployeeDeleteComponent } from "../employee-delete/employee-delete.component";
+import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
+import { EmployeeViewComponent } from "../employee-view/employee-view.component";
 
 @Component({
   selector: "app-employee-list",
@@ -29,6 +33,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, OnDestroy {
     "salary",
     "address",
     "action",
+    "view",
   ];
 
   dataSource!: MatTableDataSource<IEmployee>;
@@ -49,7 +54,11 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private employeesSubscription: Subscription = new Subscription();
 
-  constructor(public employeeService: EmployeeService) {}
+  constructor(
+    public employeeService: EmployeeService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.employeeService
@@ -185,9 +194,17 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.employeesSubscription.unsubscribe();
   }
 
-  deleteEmployee(id: any) {
-    if (window.confirm("Are you sure you want to delete?")) {
-      this.employeeService.deleteEmployee(id);
-    }
+  deleteEmployee(id: number) {
+    const dialogRef = this.dialog.open(EmployeeDeleteComponent, {
+      width: "300px",
+      data: { id },
+    });
+  }
+
+  employeeDetail(id: string) {
+    const dialogRef = this.dialog.open(EmployeeViewComponent, {
+      width: "500px",
+      data: { id },
+    });
   }
 }

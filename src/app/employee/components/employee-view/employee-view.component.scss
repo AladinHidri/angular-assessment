@@ -1,0 +1,26 @@
+mat-card-header {
+  background: blue;
+  padding: 5px;
+  color: white;
+}
+
+mat-card-content {
+  padding: 10px;
+}
+
+mat-card {
+  padding: 0;
+}
+
+mat-card-title {
+  margin-top: 11px;
+}
+.employee-img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.display-flex {
+  display: flex;
+}

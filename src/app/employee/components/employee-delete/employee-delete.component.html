@@ -1,0 +1,8 @@
+<h1 mat-dialog-title bold>Confirmer la suppression </h1>
+<div mat-dialog-content class="dialog-content">
+    Souhaitez-vous supprimer l'employée avec l'id {{data.id}} ?
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button mat-dialog-close color="primary">Non</button>
+    <button mat-flat-button (click)="confirmDelete()" color="warn">Oui</button>
+</div>

@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Details de l'employée avec id : {{employee.id}}</mat-card-title>
+    </mat-card-header>
+    <div class="display-flex">
+        <mat-card-content>
+            <p>Nom : {{employee.firstName}}</p>
+            <p>Prénom : {{employee.lastName}}</p>
+            <p>Adresse Email : {{employee.email}}</p>
+            <p>Téléphone : {{employee.phone}}</p>
+            <p>Age : {{employee.age}}</p>
+            <p>Date de naissance : {{employee.dob}}</p>
+            <p>Salaire : {{employee.salary}}</p>
+            <p>Adresse : {{employee.address}}</p>
+
+        </mat-card-content>
+        <img [src]="employee.imageUrl" alt="Employee Image" class="rounded-circle employee-img">
+    </div>
+</mat-card>

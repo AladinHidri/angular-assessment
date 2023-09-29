@@ -34,6 +34,6 @@ export class EmployeeAddComponent {
 
   createEmployee(newEmployee: IEmployee) {
     this.restApi.createEmployee(newEmployee);
-    this.router.navigate(["/employees-list"]);
+    this.router.navigate([""]);
   }
 }

@@ -26,7 +26,7 @@ table {
 
 .toolbar {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background-color: #9efff3;
 }
 .center-header {
@@ -56,4 +56,12 @@ table {
   justify-content: center;
   align-items: center;
   height: 10vh;
+}
+
+.img-style {
+  width: 45px;
+  height: 45px;
+}
+.padding-left-10 {
+  padding-left: 10%;
 }
